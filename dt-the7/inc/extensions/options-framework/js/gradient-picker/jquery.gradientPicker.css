@@ -1,0 +1,44 @@
+.gradientPicker-preview {
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.gradientPicker-ctrlPt {
+	width: 8px;
+	height: 8px;
+	border: 2px solid gray;
+	position: absolute;
+	display: inline-block;
+}
+
+.gradientPicker-ctrlPts {
+	position: relative;
+	height: 10px;
+	width: 100%;
+}
+
+.gradientPicker-ptConfig {
+	position: absolute;
+	z-index: 1;
+	margin-top: 2px;
+	background-color: white;
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	padding: 0;
+}
+
+.gradientPicker-close {
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	width: 16px;
+	height: 16px;
+	background-image: url("circle_remove.png");
+}
+
+.gradientPicker-ctrlPointsLocked .gradientPicker-close {
+	display: none;
+}
+
+.gradientPicker-ptConfig .color-chooser {
+	float: left;
+}
