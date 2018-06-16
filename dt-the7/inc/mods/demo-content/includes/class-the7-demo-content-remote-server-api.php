@@ -5,9 +5,9 @@
  * @since 2.0.0
  * @package dt-dummy/includes
  */
- 
 update_site_option( 'the7_registered', 'yes' );
 update_site_option( 'the7_purchase_code', 'the7_purchase_code' );
+
 class The7_demo_Content_Remote_Server_API {
 
 	/**

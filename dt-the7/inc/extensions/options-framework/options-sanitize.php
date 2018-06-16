@@ -31,16 +31,33 @@ function of_sanitize_spacing( $input, $option ) {
 }
 add_filter( 'of_sanitize_spacing', 'of_sanitize_spacing', 10, 2 );
 
+/**
+ * Sanitize gradient picker value.
+ *
+ * @param array|string $input
+ * @param array $option
+ *
+ * @return string
+ */
 function of_sanitize_gradient_picker( $input, $option ) {
-	$input = The7_Option_Field_Gradient_Picker::sanitize( $input );
-	$input = The7_Option_Field_Gradient_Picker::encode( $input );
-
-	if ( empty( $input ) && isset( $option['std'] ) ) {
-		$input = $option['std'];
+	$fixed_angle = isset( $option['fixed_angle'] ) ? $option['fixed_angle'] : '';
+	if ( is_array( $input ) ) {
+		$input = ( $fixed_angle ? $fixed_angle : '135deg' ) . "|{$input[0]} 30%|{$input[1]} 100%";
 	}
 
-	return $input;
+	$decoded_val = The7_Option_Field_Gradient_Picker::sanitize( $input );
+	if ( $fixed_angle ) {
+		$decoded_val['angle'] = $fixed_angle;
+	}
+	$sanitized_input = The7_Option_Field_Gradient_Picker::encode( $decoded_val );
+
+	if ( empty( $sanitized_input ) && isset( $option['std'] ) ) {
+		return $option['std'];
+	}
+
+	return $sanitized_input;
 }
+
 add_filter( 'of_sanitize_gradient_picker', 'of_sanitize_gradient_picker', 10, 2 );
 
 /* Social Buttons */

@@ -31,6 +31,7 @@ function presscore_generate_shortcode_css( $content ) {
 
 /**
  * Returns favicon tags html.
+ *
  * @deprecated
  * @since 2.2.1
  * @return string
@@ -41,6 +42,7 @@ function presscore_get_favicon() {
 
 /**
  * Return favicon html.
+ *
  * @deprecated
  *
  * @param $icon string
@@ -91,6 +93,7 @@ function dt_get_favicon( $icon = '' ) {
 
 /**
  * Chooses what src to use, based on device pixel ratio and theme settings
+ *
  * @deprecated
  *
  * @param  string $regular_img_src Regular image src
@@ -115,6 +118,7 @@ function presscore_choose_right_image_based_on_device_pixel_ratio( $regular_img_
 
 /**
  * Get image based on devicePixelRatio coocie and theme options.
+ *
  * @deprecated
  *
  * @param $logo    array Regular logo.
@@ -157,6 +161,7 @@ function dt_get_retina_sensible_image( $logo, $r_logo, $default, $custom = '', $
 
 /**
  * Get device pixel ratio cookie value and check if it greater than 1.
+ *
  * @deprecated
  * @return boolean
  */
@@ -166,6 +171,7 @@ function dt_is_hd_device() {
 
 /**
  * Add little javascript that detects devicePixelRatio and if it's more than 1 - reload the page.
+ *
  * @deprecated
  */
 function dt_core_detect_retina_script() {
@@ -230,45 +236,46 @@ function dt_core_detect_retina_script() {
 	if ( ! isset( $_COOKIE['devicePixelRatio'] ) ) :
 		?>
         <script type="text/javascript">
-            function createCookie(a, d, b) {
-                if (b) {
-                    var c = new Date;
-                    c.setTime(c.getTime() + 864E5 * b);
-                    b = "; expires=" + c.toGMTString()
-                } else b = "";
-                document.cookie = a + "=" + d + b + "; path=/"
-            }
+			function createCookie(a, d, b) {
+				if (b) {
+					var c = new Date;
+					c.setTime(c.getTime() + 864E5 * b);
+					b = "; expires=" + c.toGMTString()
+				} else b = "";
+				document.cookie = a + "=" + d + b + "; path=/"
+			}
 
-            function readCookie(a) {
-                a += "=";
-                for (var d = document.cookie.split(";"), b = 0; b < d.length; b++) {
-                    for (var c = d[b]; " " == c.charAt(0);) c = c.substring(1, c.length);
-                    if (0 == c.indexOf(a)) return c.substring(a.length, c.length)
-                }
-                return null
-            }
+			function readCookie(a) {
+				a += "=";
+				for (var d = document.cookie.split(";"), b = 0; b < d.length; b++) {
+					for (var c = d[b]; " " == c.charAt(0);) c = c.substring(1, c.length);
+					if (0 == c.indexOf(a)) return c.substring(a.length, c.length)
+				}
+				return null
+			}
 
-            function eraseCookie(a) {
-                createCookie(a, "", -1)
-            }
+			function eraseCookie(a) {
+				createCookie(a, "", -1)
+			}
 
-            function areCookiesEnabled() {
-                var a = !1;
-                createCookie("testing", "Hello", 1);
-                null != readCookie("testing") && (a = !0, eraseCookie("testing"));
-                return a
-            }
+			function areCookiesEnabled() {
+				var a = !1;
+				createCookie("testing", "Hello", 1);
+				null != readCookie("testing") && (a = !0, eraseCookie("testing"));
+				return a
+			}
 
-            (function (a) {
-                var d = readCookie("devicePixelRatio"), b = void 0 === a.devicePixelRatio ? 1 : a.devicePixelRatio;
-                areCookiesEnabled() && null == d && (createCookie("devicePixelRatio", b, 7), 1 != b && a.location.reload(!0))
-            })(window);
+			(function (a) {
+				var d = readCookie("devicePixelRatio"), b = void 0 === a.devicePixelRatio ? 1 : a.devicePixelRatio;
+				areCookiesEnabled() && null == d && (createCookie("devicePixelRatio", b, 7), 1 != b && a.location.reload(!0))
+			})(window);
         </script><?php
 	endif;
 }
 
 /**
  * Remove wp_site_icon hook if favicons set in theme options.
+ *
  * @deprecated
  * @since 2.3.1
  */
@@ -280,6 +287,7 @@ function presscore_remove_wp_site_icon() {
 
 /**
  * Remove wp_site_icon hook if favicons set in theme options.
+ *
  * @deprecated
  * @since 2.3.1
  */
@@ -291,6 +299,7 @@ function presscore_admin_remove_wp_site_icon() {
 
 /**
  * Display site icon.
+ *
  * @deprecated
  * @since 2.2.1
  */
@@ -302,6 +311,7 @@ if ( ! function_exists( 'presscore_less_get_conditional_colors' ) ) :
 
 	/**
 	 * Function returns $color|$gradient|$accent based on $test value.
+	 *
 	 * @deprecated 6.6.0
 	 * @since      3.0.0
 	 *
@@ -348,3 +358,150 @@ endif;
 function presscore_less_get_accent_colors( Presscore_Lib_LessVars_Manager $less_vars ) {
 	return the7_less_get_accent_colors( $less_vars );
 }
+
+if ( ! function_exists( 'presscore_top_bar_text2_element' ) ) :
+
+	/**
+	 * Render header text2 mini widget.
+	 *
+	 * @deprecated 6.6.1
+	 * @since      3.0.0
+	 */
+	function presscore_top_bar_text2_element() {
+		presscore_top_bar_text_element( 'header-elements-text-2' );
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_top_bar_text3_element' ) ) :
+
+	/**
+	 * Render header text3 mini widget.
+	 *
+	 * @deprecated 6.6.1
+	 * @since      3.0.0
+	 */
+	function presscore_top_bar_text3_element() {
+		presscore_top_bar_text_element( 'header-elements-text-3' );
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_options_get_font_sizes' ) ) :
+
+	/**
+	 * @deprecated 6.6.1
+	 * @return array
+	 */
+	function presscore_options_get_font_sizes() {
+		return array(
+			"big"    => _x( 'large', 'theme-options', 'the7mk2' ),
+			"normal" => _x( 'medium', 'theme-options', 'the7mk2' ),
+			"small"  => _x( 'small', 'theme-options', 'the7mk2' ),
+		);
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_options_get_show_hide' ) ) :
+
+	/**
+	 * @deprecated 6.6.1
+	 * @return array
+	 */
+	function presscore_options_get_show_hide() {
+		return array(
+			'show' => _x( 'Show', 'theme-options', 'the7mk2' ),
+			'hide' => _x( 'Hide', 'theme-options', 'the7mk2' ),
+		);
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_options_get_en_dis' ) ) :
+
+	/**
+	 * @deprecated 6.6.1
+	 * @return array
+	 */
+	function presscore_options_get_en_dis() {
+		return array(
+			'1' => _x( 'Enabled', 'theme-options', 'the7mk2' ),
+			'0' => _x( 'Disabled', 'theme-options', 'the7mk2' ),
+		);
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_options_tpl_logo' ) ) :
+
+	/**
+	 * @deprecated 6.6.1
+	 */
+	function presscore_options_tpl_logo( &$options, $prefix = '', $fields = array() ) {
+		$_fields = array();
+
+		$_fields['logo_regular'] = array(
+			'name' => _x( 'Logo', 'theme-options', 'the7mk2' ),
+			'type' => 'upload',
+			'mode' => 'full',
+			'std'  => array( '', 0 ),
+		);
+
+		$_fields['logo_hd'] = array(
+			'name' => _x( 'High-DPI (retina) logo', 'theme-options', 'the7mk2' ),
+			'type' => 'upload',
+			'mode' => 'full',
+			'std'  => array( '', 0 ),
+		);
+
+		$_fields = array_merge_recursive( $_fields, $fields );
+
+		$prefix = ( $prefix ? $prefix . '-' : '' );
+		foreach ( $_fields as $field_id => $field ) {
+			$field_id = ( isset( $field['id'] ) ? $field['id'] : $field_id );
+			if ( ! is_numeric( $field_id ) ) {
+				$field_id = $prefix . $field_id;
+
+				$field['id'] = $field_id;
+
+				$options[ $field_id ] = $field;
+			} else {
+				$options[] = $field;
+			}
+		}
+	}
+
+endif;
+
+if ( ! function_exists( 'presscore_get_team_links_array' ) ) :
+
+	/**
+	 * Return links list for team post meta box.
+	 *
+	 * @deprecated 6.6.1 Moved to dt-the7-core.
+	 * @return array.
+	 */
+	function presscore_get_team_links_array() {
+		$team_links = array(
+			'website' => array( 'desc' => _x( 'Personal blog / website', 'team link', 'the7mk2' ) ),
+			'mail'    => array( 'desc' => _x( 'E-mail', 'team link', 'the7mk2' ) ),
+		);
+
+		$common_links = presscore_get_social_icons_data();
+		if ( $common_links ) {
+
+			foreach ( $common_links as $key => $value ) {
+
+				if ( isset( $team_links[ $key ] ) ) {
+					continue;
+				}
+
+				$team_links[ $key ] = array( 'desc' => $value );
+			}
+		}
+
+		return $team_links;
+	}
+
+endif;

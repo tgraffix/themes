@@ -7,13 +7,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'save_post', 'the7_save_shortcode_inline_css', 1, 2 );
 add_filter( 'the_excerpt', 'the7_shortcodeaware_excerpt_filter', 9 );
 add_filter( 'the7_shortcodeaware_excerpt', 'the7_shortcodeaware_excerpt_filter' );
+add_action( 'wp_enqueue_scripts', 'the7_print_shortcodes_inline_css', 1000 );
+
+function the7_print_shortcodes_inline_css() {
+	global $post;
+
+	if ( ! $post || is_home() ) {
+		return;
+	}
+
+	$shortcodes_inline_css = get_post_meta( get_the_ID(), DT_Shortcode_With_Inline_Css::INLINE_CSS_META_KEY, true );
+
+	/**
+	 * Allow to change shortcodes inline css before output.
+	 *
+	 * @since 6.6.1
+	 */
+	$shortcodes_inline_css = apply_filters( 'the7_shortcodes_get_inline_css', $shortcodes_inline_css );
+
+	if ( ! $shortcodes_inline_css ) {
+		return;
+	}
+
+	wp_add_inline_style( 'style', $shortcodes_inline_css );
+}
 
 if ( ! function_exists( 'the7_save_shortcode_inline_css' ) ) {
 
 	/**
 	 * Store shortcodes inline css from post content.
 	 *
-	 * @param int $postID
+	 * @param int     $postID
 	 * @param WP_Post $post
 	 */
 	function the7_save_shortcode_inline_css( $postID, $post ) {
@@ -54,7 +78,7 @@ if ( ! function_exists( 'the7_generate_shortcode_css' ) ) {
 		preg_match_all( '/' . get_shortcode_regex() . '/', $content, $shortcodes );
 		foreach ( $shortcodes[2] as $index => $tag ) {
 			$attr_array = shortcode_parse_atts( trim( $shortcodes[3][ $index ] ) );
-			$css .= apply_filters( "the7_generate_sc_{$tag}_css", '', $attr_array );
+			$css        .= apply_filters( "the7_generate_sc_{$tag}_css", '', $attr_array );
 			if ( ! empty( $shortcodes[5][ $index ] ) ) {
 				$css .= the7_generate_shortcode_css( $shortcodes[5][ $index ] );
 			}
@@ -68,7 +92,6 @@ if ( ! function_exists( 'the7_shortcodeaware_excerpt_filter' ) ) {
 
 	/**
 	 * Return current post autoexcerpt after doing shortcodes if $output is empty.
-	 *
 	 * Fix for situation when get_the_excerpt() returns empty string because of content contain only shortcodes.
 	 *
 	 * @since 6.3.1
@@ -85,9 +108,9 @@ if ( ! function_exists( 'the7_shortcodeaware_excerpt_filter' ) ) {
 			$content = strip_shortcodes( $post->post_content );
 			remove_filter( 'strip_shortcodes_tagnames', 'the7_shortcodes_to_strip_from_auto_exerpt' );
 
-			$text = wp_strip_all_tags( do_shortcode( $content ) );
+			$text           = wp_strip_all_tags( do_shortcode( $content ) );
 			$excerpt_length = apply_filters( 'excerpt_length', 55 );
-			$excerpt_more = apply_filters( 'excerpt_more', ' [...]' );
+			$excerpt_more   = apply_filters( 'excerpt_more', ' [...]' );
 
 			return wp_trim_words( $text, $excerpt_length, $excerpt_more );
 		}

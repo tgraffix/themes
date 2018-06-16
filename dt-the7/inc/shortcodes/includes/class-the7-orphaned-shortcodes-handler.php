@@ -15,8 +15,11 @@ class The7_Orphaned_Shortcodes_Handler {
 		return $str . md5( $shortcode_obj->get_tag() . $this->id );
 	}
 
-	public function get_inline_css( $_, DT_Shortcode_With_Inline_Css $shortcode_obj ) {
-		$shortcode_obj->allow_to_print_inline_css();
+	public function get_inline_css( $_, $shortcode_obj = null ) {
+		if ( ! is_a( $shortcode_obj, 'DT_Shortcode_With_Inline_Css' ) ) {
+			return '';
+		}
+
 		$css_list = (array) get_option( $this->cache_option_id, array() );
 		$unique_id = $this->get_unique_id( $shortcode_obj );
 

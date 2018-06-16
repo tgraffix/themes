@@ -48,7 +48,7 @@ input.dt-btn-m[type="submit"],
 /*bg style*/
 .dt-btn:not(.btn-light):not(.light-bg-btn):not(.outline-btn):not(.outline-bg-btn),
 button.button,
-a.button,
+a.button:not(.edd-submit),
 .dt-form button,
 .widget .dt-form .dt-btn,
 //input[type="button"],
@@ -109,7 +109,7 @@ input[type="submit"]:not([name="update_cart"]),
 /* #standard buttons color & background
 ================================================== */
 button.button,
-a.button,
+a.button:not(.edd-submit),
 .dt-form button,
 #page .widget .dt-form .dt-btn,
 .widget .dt-form .dt-btn,
@@ -241,13 +241,11 @@ input[type="submit"]:not([name="update_cart"]),
 	&.title-btn-hover-color:hover > .text-wrap *,
 	&.title-btn-hover-color:hover > i[class^="fa"] {
 		color: @h1-color !important;
-		-webkit-text-fill-color: @h1-color;
 	}
 	&.default-btn-hover-color:hover > span:not(.rippleWrap),
 	&.default-btn-hover-color:hover > .text-wrap *,
 	&.default-btn-hover-color:hover > i[class^="fa"] {
 		color: @dt-btn-hover-color !important;
-		-webkit-text-fill-color: @dt-btn-hover-color;
 	}
 	&.accent-btn-hover-color:hover > span:not(.rippleWrap),
 	&.accent-btn-hover-color:hover > .text-wrap *,
@@ -273,7 +271,6 @@ input[type="submit"]:not([name="update_cart"]),
 .custom-btn-hover-color .dt-btn:not(.custom-btn-color):not(.accent-btn-hover-color):not(.btn-shortcode):hover > .text-wrap * {
 	background: none;
 	color: @dt-btn-hover-color;
-	-webkit-text-fill-color: @dt-btn-hover-color;
 }
 .custom-btn-hover-color .dt-btn:hover > .text-wrap * {
 	color: inherit;

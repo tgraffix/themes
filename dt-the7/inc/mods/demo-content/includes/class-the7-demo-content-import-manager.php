@@ -285,7 +285,7 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 				}
 			}
 		}
-		$responce['response']= getPostsList;
+		$responce['response']= 'getPostsList';
 		$responce['data']= $availablePosts;
 		return $responce;
 	}

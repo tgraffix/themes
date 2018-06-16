@@ -403,11 +403,7 @@
   'header-elements-woocommerce_cart-caption' => '',
   'header-elements-woocommerce_cart-counter-bg' => 'accent',
   'header-elements-woocommerce_cart-counter-bg-color' => '#000000',
-  'header-elements-woocommerce_cart-counter-bg-gradient' => 
-  array (
-    0 => '#37a0fe',
-    1 => '#6b5ffd',
-  ),
+  'header-elements-woocommerce_cart-counter-bg-gradient' => '90deg|#37a0fe 30%|#6b5ffd 100%',
   'header-elements-woocommerce_cart-counter-color' => '#ffffff',
   'header-elements-woocommerce_cart-counter-style' => 'round',
   'header-elements-woocommerce_cart-first-header-switch' => 'near_logo',

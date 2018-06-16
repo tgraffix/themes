@@ -47,7 +47,7 @@ class The7_WC_Mini_Cart {
 		ob_start();
 		dt_woocommerce_configure_mini_cart();
 		self::render_cart_inner();
-		$fragments['.shopping-cart'] = ob_get_clean();
+		$fragments['.wc-shopping-cart'] = ob_get_clean();
 
 		return $fragments;
 	}

@@ -42,7 +42,6 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 
 			$this->sc_name = 'dt_products_carousel';
 			$this->unique_class_base = 'products-carousel-shortcode-id';
-			//$this->taxonomy = 'category';
 			$this->post_type = 'product';
 
 
@@ -123,9 +122,6 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 		 * Do shortcode here.
 		 */
 		protected function do_shortcode( $atts, $content = '' ) {
-			$attributes = &$this->atts;
-			global $woocommerce, $product;
-
 			$query =  new WP_Query( $this->get_query_args() );
 
 			do_action( 'presscore_before_shortcode_loop', $this->sc_name, $this->atts );
@@ -180,7 +176,6 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 		}
 		
 		protected function get_container_html_class( $class = array() ) {
-			$attributes = &$this->atts;
 			$el_class = $this->atts['el_class'];
 
 			// Unique class.
@@ -197,7 +192,7 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 			};
 
 
-			switch ( $attributes['bullets_style'] ) {
+			switch ( $this->atts['bullets_style'] ) {
 				case 'scale-up':
 					$class[] = 'bullets-scale-up';
 					break;
@@ -217,7 +212,7 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 					$class[] = 'bullets-etefu';
 					break;
 			};
-			switch ( $attributes['arrow_responsiveness'] ) {
+			switch ( $this->atts['arrow_responsiveness'] ) {
 				case 'hide-arrows':
 					$class[] = 'hide-arrows';
 					break;
@@ -412,10 +407,9 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 		}
 	
 		protected function get_query_args() {
-			$attributes = &$this->atts;
 			global $woocommerce;
 			$show_products_attd = $this->get_att( 'show_products' );
-			$orderby = $attributes['orderby'];
+			$orderby = $this->atts['orderby'];
 			if ( 'id' === $orderby ) {
 				$orderby = 'ID';
 			}
@@ -456,16 +450,16 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 				case 'all_products':
 					$meta_query  = WC()->query->get_meta_query();
 					$tax_query   = WC()->query->get_tax_query();
-					if ( ! empty( $attributes['skus'] ) ) {
+					if ( ! empty( $this->atts['skus'] ) ) {
 						$query_args['meta_query'][] = array(
 							'key'     => '_sku',
-							'value'   => array_map( 'trim', explode( ',', $attributes['skus'] ) ),
+							'value'   => array_map( 'trim', explode( ',', $this->atts['skus'] ) ),
 							'compare' => 'IN',
 						);
 					}
 
-					if ( ! empty( $attributes['ids'] ) ) {
-						$query_args['post__in'] = array_map( 'trim', explode( ',', $attributes['ids'] ) );
+					if ( ! empty( $this->atts['ids'] ) ) {
+						$query_args['post__in'] = array_map( 'trim', explode( ',', $this->atts['ids'] ) );
 					}
 					break;
 				case 'sale_products':
@@ -484,8 +478,8 @@ if ( ! class_exists( 'DT_Shortcode_Products_Carousel', false ) ) :
 					break;
 				case 'categories_products':
 
-					if ( ! empty( $attributes['category_ids'] ) ) {
-						$ids        = array_filter( array_map( 'trim', explode( ',', $attributes['category_ids'] ) ) );
+					if ( ! empty( $this->atts['category_ids'] ) ) {
+						$ids        = array_filter( array_map( 'trim', explode( ',', $this->atts['category_ids'] ) ) );
 						$query_args['tax_query'] = array(
 							array(
 								'taxonomy' 	 => 'product_cat',

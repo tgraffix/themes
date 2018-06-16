@@ -38,8 +38,8 @@
 	.dt-mobile-header & {
 		width: @submenu-width;
 		color: @submenu-color !important;
+		-webkit-text-fill-color: @submenu-color;
 		background:  @submenu-bg-color !important;
-		-webkit-text-fill-color: @submenu-color !important;
 		font: @submenu-font-style @submenu-font-variant @submenu-font-weight @submenu-font-size~"/"@submenu-font-size+4 @submenu-font-family !important;
 		text-transform: @submenu-text-transform;
 		line-height: (@submenu-font-size+4)*1.5;
@@ -564,7 +564,6 @@
 }
 .custom-soc-icon-color (@customColor) when (iscolor(@customColor)) {
 	color: @customColor !important;
-	-webkit-text-fill-color: @customColor !important;
 	background: none !important;
 }
 .masthead .soc-ico a:not(:hover) .soc-font-icon,

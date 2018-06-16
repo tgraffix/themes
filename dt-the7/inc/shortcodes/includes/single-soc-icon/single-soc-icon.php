@@ -25,7 +25,6 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 			return self::$instance;
 		}
 
-		//protected function sanitize_attributes( &$atts ) {
 		public function __construct() {
 			$this->sc_name = 'dt_single_soc_icon';
 			$this->unique_class_base = 'single-soc-icon';
@@ -44,8 +43,6 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 				'soc_icon_border_color_hover'	=> '',
 				'soc_icon_bg_hover'		=> 'y',
 				'soc_icon_bg_color_hover'		=> '',
-
-				
 				'el_class'               => '',
 				'css'         			 => '',
 			);
@@ -55,19 +52,22 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 		protected function do_shortcode( $atts, $content = '' ) {
 			$this->get_unique_class();
 
-			$attributes = &$this->atts;
-			$attributes['link'] = $attributes['link'] ? esc_attr( $attributes['link'] ) : '#';
-			$link_title = $target = $rel = '';
-			$url = esc_attr( $this->atts['link'] );
-			if ( ! empty( $this->atts['link'] ) && function_exists( 'vc_build_link' ) ) {
-				$href = vc_build_link( $this->atts['link'] );
-				if ( ! empty( $href['url'] ) ) {
-					$url = esc_attr( $href['url'] );
-					$target = ( empty( $href['target'] ) ? '' : sprintf( ' target="%s"', trim( $href['target'] ) ) );
-					$link_title = ( empty( $href['title'] ) ? '' : sprintf( ' title="%s"', $href['title'] ) );
-					$rel = ( empty( $href['rel'] ) ? '' : sprintf( ' rel="%s"', $href['rel'] ) );
+			$url = '#';
+			$target = $rel = '';
+			if ( $this->atts['link'] ) {
+				if ( function_exists( 'vc_build_link' ) ) {
+					$href = vc_build_link( $this->atts['link'] );
+					if ( ! empty( $href['url'] ) ) {
+						$url = $href['url'];
+						$target = ( empty( $href['target'] ) ? '' : sprintf( ' target="%s"', trim( $href['target'] ) ) );
+						$rel = ( empty( $href['rel'] ) ? '' : sprintf( ' rel="%s"', $href['rel'] ) );
+					}
+				} else {
+					$url = $this->atts['link'];
+
 				}
 			}
+
 			$dt_soc_icon_attr = esc_attr( $this->atts['dt_soc_icon'] );
 			$dt_soc_icon_attr = (string) $dt_soc_icon_attr;
 
@@ -78,11 +78,11 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 			}
 
 			$dt_soc_icon = str_replace( 'dt-icon-', '', $dt_soc_icon_attr );
-			if ( 'deviant' == $dt_soc_icon ) {
+			if ( 'deviant' === $dt_soc_icon ) {
 				$dt_soc_icon = 'devian';
-			} elseif ( 'tumblr' == $dt_soc_icon ) {
+			} elseif ( 'tumblr' === $dt_soc_icon ) {
 				$dt_soc_icon = 'tumbler';
-			} elseif ( '500px' == $dt_soc_icon ) {
+			} elseif ( '500px' === $dt_soc_icon ) {
 				$dt_soc_icon = 'px-500';
 			} elseif ( in_array( $dt_soc_icon, array( 'youtube', 'YouTube' ) ) ) {
 				$dt_soc_icon = 'you-tube';
@@ -101,35 +101,32 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 			printf(
 				'<a title="%1$s" href="%2$s" %3$s ><i class="%4$s"></i><span class="screen-reader-text">%1$s</span></a>',
 				$title,
-				$url,
-				$target . $this->get_html_class( array( $dt_soc_icon ) ),
+				esc_attr( $url ),
+				$target . $rel . $this->get_html_class( array( $dt_soc_icon ) ),
 				"soc-font-icon {$dt_soc_icon_attr}"
 			);
 		}
 
 		protected function get_html_class($class = array()) {
-			$attributes = &$this->atts;
 			$el_class = $this->atts['el_class'];
 
 			// Unique class.
 			$class[] = $this->get_unique_class();
 
-			
-			
 			if($this->atts['soc_icon_bg'] === 'y'){
 				$class[] = 'dt-icon-bg-on';
 			}else{
 				$class[] = 'dt-icon-bg-off';
-			};
+			}
 
 			if($this->atts['soc_icon_bg_hover'] === 'y'){
 				$class[] = 'dt-icon-hover-bg-on';
 			}else{
 				$class[] = 'dt-icon-hover-bg-off';
-			};
+			}
 			if ( function_exists( 'vc_shortcode_custom_css_class' ) ) {
 				$class[] = vc_shortcode_custom_css_class( $this->atts['css'], ' ' );
-			};
+			}
 			$class[] = $el_class;
 
 			return 'class="' . esc_attr( implode( ' ', $class ) ) . '"';
@@ -179,9 +176,6 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 		 *
 		 * @return string
 		 */
-		// protected function get_vc_inline_html() {
-  //           return false;
-		// }
 		protected function get_vc_inline_html() {
 			$dt_soc_icon_attr = esc_attr( $this->atts['dt_soc_icon'] );
 			$dt_soc_icon_attr = (string) $dt_soc_icon_attr;
@@ -222,8 +216,5 @@ if ( ! class_exists( 'DT_Shortcode_Single_Social_Icon', false ) ) {
 		}
 	}
 	DT_Shortcode_Single_Social_Icon::get_instance()->add_shortcode();
-	if ( class_exists( 'WPBakeryShortCode' ) ) {
-    	class WPBakeryShortCode_dt_single_soc_icon extends WPBakeryShortCode {
-    }
-}
+
 }

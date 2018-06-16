@@ -405,6 +405,9 @@ function optionsframework_load_styles() {
 /* Loads the javascript */
 
 function optionsframework_load_scripts($hook) {
+    // Fix conflict with WPML.
+	wp_dequeue_script( 'wpml-select-2' );
+
 	// Select2
 	wp_register_script( 'options-select2', OPTIONS_FRAMEWORK_URL . 'js/select2/js/select2.js', array( 'jquery' ), THE7_VERSION, true );
 

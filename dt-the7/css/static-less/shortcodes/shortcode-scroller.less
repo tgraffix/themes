@@ -118,12 +118,10 @@
 				.arrows-dark&,
 				.arrows-accent& {
 					color: #fff !important;
-					-webkit-text-fill-color: #fff !important;
 				}
 				background: none;
 				.arrows-light& {
 					color: rgba(34,34,34,0.85) !important;
-					-webkit-text-fill-color: rgba(34,34,34,0.85) !important;
 				}
 			}
 		}
@@ -308,9 +306,11 @@
 .owl-nav a i:before {
 	.slider-masonry &,
 	.slider-simple & {
-		-webkit-text-fill-color:white !important;
 		color: white;
 		background: none !important;
+		.accent-gradient & {
+			color: white;
+		}
 	}
 }
 .rsShor-wrap .rsArrowRight.rsArrowDisabled .rsArrowIcn:hover:before {

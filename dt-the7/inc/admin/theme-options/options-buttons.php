@@ -232,9 +232,9 @@ foreach ( presscore_themeoptions_get_buttons_defaults() as $id => $opts ) {
 		'std'  => $opts['uc'],
 	);
 
-	$padding_std = sprintf( '%spx %spx %spx %spx', $opts['padding_top'], $opts['padding_right'], $opts['padding_bottom'], $opts['padding_left'] );
+	$padding_std                      = sprintf( '%spx %spx %spx %spx', $opts['padding_top'], $opts['padding_right'], $opts['padding_bottom'], $opts['padding_left'] );
 	$options["buttons-{$id}_padding"] = array(
-		'id'   => 'buttons-{$id}_padding',
+		'id'   => "buttons-{$id}_padding",
 		'name' => _x( 'Padding', 'theme-options', 'the7mk2' ),
 		'type' => 'spacing',
 		'std'  => $padding_std,

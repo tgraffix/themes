@@ -15385,6 +15385,24 @@ $window.trigger("dt.removeLoading");
 			});
 		};
 
+        // EDD cart ajax handler.
+        $( document.body ).on( 'edd_cart_item_removed edd_cart_item_added', function( event, response ) {
+            var data = {
+                action:		'the7_edd_cart_micro_widget',
+            };
+
+            xhr = $.ajax({
+                type:		'POST',
+                url:		dtLocal.ajaxurl,
+                data:		data,
+                success:	function( response ) {
+                    $('.edd-shopping-cart').replaceWith( $(response) );
+                    setupMiniCart();
+                    $('.mobile-true .shopping-cart.show-sub-cart').touchDropdownCart();
+	                showDropOnAddedToCart('5000');
+                }
+            });
+        });
 
 		//Cart plus/minus btns
 

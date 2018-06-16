@@ -52,7 +52,6 @@
 }
 .custom-mixin-footer-with-accent-color (@customColor, @customColor-accent) when (iscolor(@customColor-accent)) {
 	color: @customColor;
-	-webkit-text-fill-color: @customColor;
 }
 .footer .widget a,
 .footer .widget .post-content .text-secondary {
@@ -173,7 +172,8 @@ a.rsswidget,
 .widget_nav_menu a:hover,
 a.rsswidget:hover {
 	color: @accent-bg-color;
-	.sidebar-content & {
+	.sidebar-content &,
+	.sidebar-content.solid-bg & {
 		color: @accent-bg-color;
 	}
 	// .footer & {
@@ -186,6 +186,7 @@ a.rsswidget:hover {
 		color: @accent-bg-color;
 		.custom-mixin-footer-color (@widget-footer-accent-color);
 		.accent-gradient & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
 			.custom-mixin-footer-color (@widget-footer-accent-color);
 		}
 	}

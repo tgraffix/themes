@@ -83,7 +83,7 @@ if ( count( WC()->cart->get_cart() ) <= 0 ) {
 $cart_hash = The7_WC_Mini_Cart::get_cart_fragment_hash();
 ?>
 
-<div class="<?php echo 'shopping-cart ' . presscore_esc_implode( ' ', $dt_cart_class ) ?>" data-cart-hash="<?php esc_attr_e( $cart_hash ) ?>">
+<div class="<?php echo 'wc-shopping-cart shopping-cart ' . presscore_esc_implode( ' ', $dt_cart_class ) ?>" data-cart-hash="<?php esc_attr_e( $cart_hash ) ?>">
 
 	<a class="<?php echo 'wc-ico-cart ' . presscore_esc_implode( ' ', $dt_cart_class ) ?>" href="<?php echo wc_get_cart_url() ?>"><?php echo "{$dt_cart_caption}{$dt_product_counter_html}" ?></a>
 

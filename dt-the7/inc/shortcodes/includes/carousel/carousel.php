@@ -95,21 +95,18 @@ if ( ! class_exists( 'DT_Shortcode_Carousel', false ) ) {
 		 * Do shortcode here.
 		 */
 		protected function do_shortcode( $atts, $content = '' ) {
-			$attributes = &$this->atts;
-		
 			echo '<div ' . $this->get_container_html_class( array( 'owl-carousel carousel-shortcode dt-owl-carousel-call' ) ) . ' ' . $this->get_container_data_atts() . '>';
 				echo do_shortcode($content);
 			echo '</div>';
 		}
 		
 		protected function get_container_html_class( $class = array() ) {
-			$attributes = &$this->atts;
 			$el_class = $this->atts['el_class'];
 
 			// Unique class.
 			$class[] = $this->get_unique_class();
 
-			switch ( $attributes['bullets_style'] ) {
+			switch ( $this->atts['bullets_style'] ) {
 				case 'scale-up':
 					$class[] = 'bullets-scale-up';
 					break;
@@ -129,7 +126,7 @@ if ( ! class_exists( 'DT_Shortcode_Carousel', false ) ) {
 					$class[] = 'bullets-etefu';
 					break;
 			};
-			switch ( $attributes['arrow_responsiveness'] ) {
+			switch ( $this->atts['arrow_responsiveness'] ) {
 				case 'hide-arrows':
 					$class[] = 'hide-arrows';
 					break;

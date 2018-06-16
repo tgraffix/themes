@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 abstract class DT_Shortcode_With_Inline_Css extends DT_Shortcode {
 
+	const INLINE_CSS_META_KEY = 'the7_shortcodes_inline_css';
+
 	/**
 	 * Shortcode name.
 	 *
@@ -59,7 +61,7 @@ abstract class DT_Shortcode_With_Inline_Css extends DT_Shortcode {
 	/**
 	 * @var bool
 	 */
-	protected static $inline_css_printed = false;
+	protected static $inline_css_printed = true;
 
 	/**
 	 * DT_Shortcode_With_Inline_Css constructor.
@@ -218,7 +220,7 @@ abstract class DT_Shortcode_With_Inline_Css extends DT_Shortcode {
 	 */
 	public function get_unique_class() {
 		if ( ! $this->unique_class ) {
-			$this->unique_class = $this->unique_class_base . '-' . $this->sc_id++;
+			$this->unique_class = $this->unique_class_base . '-' . md5( $this->get_tag() . json_encode( $this->atts ) );
 		}
 
 		return $this->unique_class;
@@ -284,7 +286,7 @@ abstract class DT_Shortcode_With_Inline_Css extends DT_Shortcode {
 
 		self::$inline_css_printed = true;
 
-		$inline_css = get_post_meta( get_the_ID(), 'the7_shortcodes_inline_css', true );
+		$inline_css = get_post_meta( get_the_ID(), self::INLINE_CSS_META_KEY, true );
 
 		/**
 		 * Allow to change shortcodes inline css before output.

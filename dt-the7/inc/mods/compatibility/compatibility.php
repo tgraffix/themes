@@ -29,6 +29,7 @@ if ( ! class_exists( 'Presscore_Modules_ComparibilityModule', false ) ) :
 			include $path . 'wpml/class-compatibility-wpml.php';
 			include $path . 'backward-compat/mod-the7-compatibility.php';
 			include $path . 'woocommerce/class-compatibility-woocommerce.php';
+			include $path . 'edd/class-compatibility-edd.php';
 		}
 	}
 

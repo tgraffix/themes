@@ -64,6 +64,10 @@ class The7_Install {
 			'the7_mass_regenerate_short_codes_inline_css',
 			'the7_update_660_db_version',
 		),
+		'6.6.1' =>array(
+			'the7_mass_regenerate_short_codes_inline_css',
+			'the7_update_661_db_version',
+		),
 	);
 
     public static function init() {
@@ -251,6 +255,7 @@ class The7_Install {
 			'6.1.0' => 'The7_DB_Patch_060100',
 			'6.1.1' => 'The7_DB_Patch_060101',
 			'6.6.0' => 'The7_DB_Patch_060600',
+			'6.6.1' => 'The7_DB_Patch_060601',
 		);
 
 		$update_options = false;

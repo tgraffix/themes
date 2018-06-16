@@ -354,3 +354,7 @@ function the7_update_650_db_version() {
 function the7_update_660_db_version() {
 	The7_Install::update_db_version( '6.6.0' );
 }
+
+function the7_update_661_db_version() {
+	The7_Install::update_db_version( '6.6.1' );
+}

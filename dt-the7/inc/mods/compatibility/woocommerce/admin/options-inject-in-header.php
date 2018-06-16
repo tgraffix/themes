@@ -71,7 +71,7 @@ $new_options['header-elements-woocommerce_cart-counter-style'] = array(
 
 $new_options['header-elements-woocommerce_cart-counter-color'] = array(
 	'id'   => 'header-elements-woocommerce_cart-counter-color',
-	'name' => _x( 'Products counter color', 'theme-options', 'the7mk2' ),
+	'name' => _x( 'Products counter font color', 'theme-options', 'the7mk2' ),
 	'type' => 'color',
 	'std'  => '#ffffff',
 );

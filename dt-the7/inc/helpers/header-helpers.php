@@ -243,60 +243,52 @@ if ( ! function_exists( 'presscore_render_header_elements' ) ) :
 
 			// render elements
 			foreach ( $field_elements as $element ) {
-
 				switch ( $element ) {
 					case 'search':
 						presscore_top_bar_search_element();
 						break;
-
 					case 'social_icons':
 						echo presscore_get_topbar_social_icons();
 						break;
-
 					case 'custom_menu':
 						presscore_top_bar_menu_element();
 						break;
-
 					case 'menu2':
 						presscore_top_bar_menu2_element();
 						break;
-
 					case 'login':
 						pressocore_render_login_form();
 						break;
-
 					case 'text_area':
-						presscore_top_bar_text_element();
+						presscore_top_bar_text_element( 'header-elements-text' );
 						break;
-
 					case 'text2_area':
-						presscore_top_bar_text2_element();
+						presscore_top_bar_text_element( 'header-elements-text-2' );
 						break;
-
 					case 'text3_area':
-						presscore_top_bar_text3_element();
+						presscore_top_bar_text_element( 'header-elements-text-3' );
 						break;
-
+					case 'text4_area':
+						presscore_top_bar_text_element( 'header-elements-text-4' );
+						break;
+					case 'text5_area':
+						presscore_top_bar_text_element( 'header-elements-text-5' );
+						break;
 					case 'skype':
 						presscore_top_bar_contact_element('skype');
 						break;
-
 					case 'email':
 						presscore_top_bar_contact_element('email');
 						break;
-
 					case 'address':
 						presscore_top_bar_contact_element('address');
 						break;
-
 					case 'phone':
 						presscore_top_bar_contact_element('phone');
 						break;
-
 					case 'working_hours':
 						presscore_top_bar_contact_element('clock');
 						break;
-
 					case 'info':
 						presscore_top_bar_contact_element('info');
 						break;
@@ -447,32 +439,6 @@ if ( ! function_exists( 'presscore_top_bar_text_element' ) ) :
 			$classes = presscore_get_mini_widget_class( $opt_id, 'text-area' );
 			echo '<div class="' . implode( ' ', $classes ) . '">' . wpautop( do_shortcode( $top_text ) ) . '</div>';
 		}
-	}
-
-endif;
-
-if ( ! function_exists( 'presscore_top_bar_text2_element' ) ) :
-
-	/**
-	 * Render header text2 mini widget.
-	 * 
-	 * @since 3.0.0
-	 */
-	function presscore_top_bar_text2_element() {
-		presscore_top_bar_text_element( 'header-elements-text-2' );
-	}
-
-endif;
-
-if ( ! function_exists( 'presscore_top_bar_text3_element' ) ) :
-
-	/**
-	 * Render header text3 mini widget.
-	 * 
-	 * @since 3.0.0
-	 */
-	function presscore_top_bar_text3_element() {
-		presscore_top_bar_text_element( 'header-elements-text-3' );
 	}
 
 endif;

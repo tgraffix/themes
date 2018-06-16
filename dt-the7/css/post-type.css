@@ -609,8 +609,7 @@ body.testimonials {
 .mobile-false .text-on-img.hover-grid .dt-owl-item {
   overflow: hidden;
 }
-.mobile-true .rollover-content.hide-content,
-.mobile-true .dt-owl-item i {
+.mobile-true .rollover-content.hide-content {
   display: none;
 }
 .mobile-true .albums .rollover-content,
@@ -835,7 +834,6 @@ body.testimonials {
 .links-hovers-disabled .rollover-content .entry-title a:hover {
   background: none;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: #fff;
 }
 #page .rollover-content,
 #page .rollover-content *,
@@ -848,7 +846,6 @@ body.testimonials {
 #page .hover-style-one h2.entry-title,
 #page .hover-style-two h2.entry-title {
   color: #fff;
-  -webkit-text-fill-color: #fff;
 }
 .rollover-content .portfolio-categories > a:after,
 .rollover-content .portfolio-categories > span:after {
@@ -1289,7 +1286,6 @@ body.testimonials {
 }
 .cs-style-3 .rollover-content * {
   color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
 }
 .accent-gradient .cs-style-3 .rollover-content .entry-title a {
   -webkit-backface-visibility: hidden;
@@ -1830,7 +1826,6 @@ body.testimonials {
 .slider-wrapper.arrows-accent.related-projects .owl-nav a:hover i,
 .arrows-accent.slider-wrapper.related-projects .owl-nav a:hover i:before {
   color: rgba(255, 255, 255, 0.75) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
 }
 .related-projects a.owl-prev {
   top: 50%;
@@ -2165,6 +2160,11 @@ body.testimonials {
 .portfolio-shortcode .post-entry-title-content .entry-title a {
   -webkit-transition: color 0.35s;
   transition: color 0.35s;
+}
+.accent-gradient .portfolio-shortcode .post-entry-content .entry-title a,
+.accent-gradient .portfolio-shortcode .post-entry-title-content .entry-title a {
+  -webkit-transition: none;
+  transition: none;
 }
 .portfolio-shortcode .entry-meta {
   padding: 0;

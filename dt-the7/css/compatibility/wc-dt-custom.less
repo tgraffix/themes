@@ -34,9 +34,9 @@
 
 		.text-gradient (@startColor: #eee, @endColor: white) when not (@endColor = "") {
 			background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
-
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
+			color: transparent;
+		  	-webkit-background-clip: text;
+		  	background-clip: text;
 		}
 
 		.background-gradient (@startColor: #eee, @endColor: white) when not (@endColor = "") {
@@ -148,7 +148,6 @@
 
 	.custom-mixin-footer-color (@customColor) when (iscolor(@customColor)) {
 		color: @customColor;
-		-webkit-text-fill-color: @customColor;
 	}
 	.custom-mixin-color-fade (@customColor) when (iscolor(@customColor)) {
 		color: fade(@customColor, 70%);
@@ -514,12 +513,8 @@ div:not(.wc-coupon-wrap):not(.wc-login-wrap):not(.woocommerce-MyAccount-content)
 			& * {
 				color: @message-color;
 			}
-			// & a.button * {
-			// 	color: @dt-btn-color;
-			// }
 		&:before {
 			color: @message-color;
-			-webkit-text-fill-color: @message-color;
 		}
 	}
 }
@@ -875,15 +870,12 @@ form.lost_reset_password label,
 	.shopping-cart-inner .amount {
 		.masthead &,
 		.dt-mobile-header & {
-			/*line-height: @base-line-height;*/
 			color: @submenu-color !important;
-			/*font-size: @base-font-size;*/
 			font: @submenu-font-style @submenu-font-variant @submenu-font-weight @submenu-font-size~"/"@submenu-font-size+4 @submenu-font-family;
 			text-transform: @submenu-text-transform;
 		}
 		.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) &  {
 			color: @submenu-color !important;
-			-webkit-text-fill-color: @submenu-color;
 		}
 	}
 	/*Show cart buttons on top if cant click*/
@@ -927,10 +919,8 @@ form.lost_reset_password label,
 						.shopping-cart-inner .quantity,
 						.shopping-cart-inner strong {
 							color: fade(@submenu-color, 50%) !important;
-							-webkit-text-fill-color: fade(@submenu-color, 50%);
 							.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) & {
 								color: fade(@submenu-color, 50%) !important;
-								-webkit-text-fill-color: fade(@submenu-color, 50%);
 							}
 						}
 
@@ -950,7 +940,6 @@ form.lost_reset_password label,
 						}
 						.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) &  {
 							color: @dt-btn-color !important;
-							-webkit-text-fill-color: @dt-btn-color;
 						}
 					}
 					.shopping-cart-inner a.button:hover,
@@ -961,7 +950,6 @@ form.lost_reset_password label,
 						}
 						.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) &  {
 							color: @dt-btn-hover-color !important;
-							-webkit-text-fill-color: @dt-btn-hover-color;
 						}
 					}
 					.shopping-cart-inner a:not(.button):hover {
@@ -970,7 +958,6 @@ form.lost_reset_password label,
 							background: none;
 							color: @submenu-hover-color !important;
 							text-decoration: none !important;
-							-webkit-text-fill-color: @submenu-hover-color !important;
 							.text-gradient (@startColor: @submenu-hover-color, @endColor: @submenu-hover-color-2) !important;
 						}
 						.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) &  {
@@ -1168,11 +1155,9 @@ form.lost_reset_password label,
 		}
 		.wc-ico-cart > .counter,
 		.wc-ico-cart:hover > .counter {
-			color: @product-counter-color !important;
-			-webkit-text-fill-color: @product-counter-color;
+			color: @product-counter-color;
 			.light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) &  {
-				color: @product-counter-color !important;
-				-webkit-text-fill-color: @product-counter-color;
+				color: #fff;
 			}
 		}
 		.wc-ico-cart > .counter.custom-bg {

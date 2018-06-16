@@ -196,14 +196,14 @@ h3.entry-title,
 	.stripe & {
 		color: @accent-bg-color;
 	}
-	.footer & {
+	.wf-container-footer & {
 		.custom-mixin-footer-color (@widget-footer-accent-color);
 	}
 }
 a,
 a:hover {
 	color: @links-color;
-	.footer & {
+	.wf-container-footer & {
 		.custom-mixin-footer-color (@widget-footer-accent-color);
 	}
 }
@@ -216,17 +216,21 @@ a:hover {
 	.accent-gradient #page & {
 		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
 	}
-	#page .footer &,
+	#page .wf-container-footer &,
 	.accent-gradient #page .footer &  {
 		.custom-mixin-footer-color (@widget-footer-accent-color);
 	}
 }
 .paint-accent-color {
+	// color: @accent-bg-color !important;
+	// .accent-gradient & {
+	// 	.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	// }
 	color: @accent-bg-color !important;
-	.accent-gradient & {
-		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
-	}
-	.footer &,
+		.accent-gradient & {
+			.text-gradient-text-fill (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	  	}
+	.wf-container-footer &,
 	.accent-gradient &  {
 		.custom-mixin-footer-color (@widget-footer-accent-color) !important;
 	}

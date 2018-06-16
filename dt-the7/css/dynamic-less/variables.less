@@ -151,7 +151,6 @@
 
 .custom-mixin-footer-color (@customColor) when (iscolor(@customColor)) {
 	color: @customColor;
-	-webkit-text-fill-color: @customColor;
 	background: none;
 }
 .custom-mixin-footer-accent-bg (@customColor, @color-opacity:100%) when (iscolor(@customColor)) {
@@ -160,6 +159,14 @@
 /* !Defining basic mixins */
 
 .text-gradient (@startColor: #eee, @endColor: white) when not (@endColor = "") {
+	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
+		// -webkit-background-clip: text;
+		// -webkit-text-fill-color: transparent;
+	color: transparent;
+  	-webkit-background-clip: text;
+  	background-clip: text;
+}
+.text-gradient-text-fill (@startColor: #eee, @endColor: white) when not (@endColor = "") {
 	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;

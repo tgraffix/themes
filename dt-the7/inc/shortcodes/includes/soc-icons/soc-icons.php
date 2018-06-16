@@ -26,7 +26,6 @@ if ( ! class_exists( 'DT_Shortcode_Social_Icons', false ) ) {
 			return self::$instance;
 		}
 
-		//protected function sanitize_attributes( &$atts ) {
 		public function __construct() {
 			$this->sc_name = 'dt_soc_icons';
 			$this->unique_class_base = 'soc-icons';
@@ -40,21 +39,18 @@ if ( ! class_exists( 'DT_Shortcode_Social_Icons', false ) ) {
 		}
 
 		protected function do_shortcode( $atts, $content = '' ) {
-			$attributes = &$this->atts;
-		
 			echo '<div ' . $this->get_container_html_class( array( 'dt-shortcode-soc-icons' ) ) . ' >';
 				echo do_shortcode($content);
 			echo '</div>';
 		}
 
 		protected function get_container_html_class($class = array() ) {
-			$attributes = &$this->atts;
-			$el_class = $this->atts['el_class'];
+			$class[] = $this->atts['el_class'];
 
 			// Unique class.
 			$class[] = $this->get_unique_class();
 
-			switch ( $attributes['icon_align'] ) {
+			switch ( $this->atts['icon_align'] ) {
 				case 'center':
 					$class[] = 'soc-icons-center';
 					break;
@@ -64,10 +60,10 @@ if ( ! class_exists( 'DT_Shortcode_Social_Icons', false ) ) {
 				case 'right':
 					$class[] = 'soc-icons-right';
 					break;
-			};
+			}
 			if ( function_exists( 'vc_shortcode_custom_css_class' ) ) {
 				$class[] = vc_shortcode_custom_css_class( $this->atts['css'], ' ' );
-			};
+			}
 			return 'class="' . esc_attr( implode( ' ', $class ) ) . '"';
 		}
 		/**
@@ -109,8 +105,5 @@ if ( ! class_exists( 'DT_Shortcode_Social_Icons', false ) ) {
 		}
 	}
 	DT_Shortcode_Social_Icons::get_instance()->add_shortcode();
-	if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-		class WPBakeryShortCode_dt_soc_icons extends WPBakeryShortCodesContainer {
-		}
-	}
+
 }

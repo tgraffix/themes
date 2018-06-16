@@ -1066,7 +1066,6 @@ button.pswp__button--zoom:hover {
 .masthead .shopping-cart-inner .cart_list a.remove:hover,
 .dt-mobile-header .shopping-cart-inner .cart_list a.remove:hover {
   color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
 }
 .widget_shopping_cart .cart_list li a.remove,
 .shopping-cart-inner .cart_list li a.remove {
@@ -1150,7 +1149,6 @@ textarea {
 #page .widget_layered_nav ul li.chosen a,
 #page .widget_layered_nav_filters ul li a {
   color: #fff;
-  -webkit-text-fill-color: #fff;
   background: none;
 }
 /*!-Products list*/
@@ -2838,12 +2836,10 @@ p.stars a.star-5:hover:after {
 }
 .woocom-rollover-content .star-rating:before {
   color: rgba(255, 255, 255, 0.4);
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.4);
 }
 .woocom-rollover-content .price del,
 .woocom-rollover-content .price del * {
   color: rgba(255, 255, 255, 0.5);
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.5);
 }
 .star-rating span {
   overflow: hidden;
@@ -3042,7 +3038,6 @@ div:not(.wc-coupon-wrap):not(.wc-login-wrap):not(.woocommerce-MyAccount-content)
   line-height: 1;
   content: "\f058";
   color: #fff;
-  -webkit-text-fill-color: #fff;
 }
 div:not(.wc-coupon-wrap):not(.wc-login-wrap):not(.woocommerce-MyAccount-content) > .woocommerce-message ul,
 .woocommerce-error ul,
@@ -9540,7 +9535,7 @@ a.pswp__share--download:hover {
 .media .post img,
 .portfolio .post img,
 .blog .post img,
-.single .post .rollover img,
+.related-projects .rollover img,
 .dt-blog-shortcode img,
 .dt-albums-shortcode:not(.owl-carousel) img,
 .dt-portfolio-shortcode:not(.owl-carousel) img,
@@ -12650,7 +12645,6 @@ input.button,
 .btn-link.custom-btn-hover-color:hover > i[class^="fa"] {
   background: none !important;
   color: inherit !important;
-  -webkit-text-fill-color: inherit !important;
 }
 .outline-element-decoration .btn-light:hover {
   box-shadow: none;
@@ -13565,12 +13559,10 @@ blockquote.shortcode-blockquote.block-style-widget {
 .arrows-accent.slider-wrapper .owl-prev i:before,
 .arrows-accent.slider-wrapper .owl-next i:before {
   color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
 }
 .arrows-light.slider-wrapper .owl-prev i:before,
 .arrows-light.slider-wrapper .owl-next i:before {
   color: rgba(34, 34, 34, 0.85) !important;
-  -webkit-text-fill-color: rgba(34, 34, 34, 0.85) !important;
 }
 .slider-wrapper .owl-prev.disabled i:before,
 .slider-wrapper .owl-next.disabled i:before,
@@ -13727,9 +13719,12 @@ blockquote.shortcode-blockquote.block-style-widget {
 }
 .slider-masonry .owl-nav a i:before,
 .slider-simple .owl-nav a i:before {
-  -webkit-text-fill-color: white !important;
   color: white;
   background: none !important;
+}
+.accent-gradient .slider-masonry .owl-nav a i:before,
+.accent-gradient .slider-simple .owl-nav a i:before {
+  color: white;
 }
 .rsShor-wrap .rsArrowRight.rsArrowDisabled .rsArrowIcn:hover:before {
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='16px' height='16px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E%3Cpolygon fill='white' points='9.349,2.035 8.016,3.363 11.661,7.022 1.031,7.022 1.031,9.016 11.661,9.016 8.016,12.674 9.349,14.002 15.309,8.02 '/%3E%3C/svg%3E");
@@ -13857,7 +13852,6 @@ blockquote.shortcode-blockquote.block-style-widget {
 }
 #page .tab-style-one .wpb_tabs_nav li.ui-state-active a {
   color: #fff;
-  -webkit-text-fill-color: #fff;
 }
 .wpb_tabs_nav a {
   -webkit-box-sizing: border-box;
@@ -14209,9 +14203,6 @@ blockquote.shortcode-blockquote.block-style-widget {
 #main .soc-ico a:hover .soc-font-icon,
 #footer .soc-ico a:hover .soc-font-icon {
   color: #fff;
-}
-#footer .soc-ico a:hover .soc-font-icon {
-  -webkit-text-fill-color: #fff;
 }
 /* #Fancy titles and separators
 ================================================== */
@@ -14966,6 +14957,11 @@ article.on-hover {
   -webkit-transition: color 0.35s;
   transition: color 0.35s;
 }
+.accent-gradient .blog-shortcode .post-entry-content .entry-title a,
+.accent-gradient .blog-shortcode .post-entry-title-content .entry-title a {
+  -webkit-transition: none;
+  transition: none;
+}
 .blog-shortcode .entry-meta {
   padding: 0;
 }
@@ -15465,6 +15461,11 @@ article.on-hover {
   -webkit-transition: color 0.35s;
   transition: color 0.35s;
 }
+.accent-gradient .owl-carousel .post-entry-content .entry-title a,
+.accent-gradient .owl-carousel .post-entry-title-content .entry-title a {
+  -webkit-transition: none;
+  transition: none;
+}
 .owl-carousel .entry-meta {
   padding: 0;
 }
@@ -15943,7 +15944,6 @@ article.on-hover {
 #page .mini-nav select option,
 .light-preset-color .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) .mini-nav select option {
   color: #b8bcbe !important;
-  -webkit-text-fill-color: #b8bcbe;
 }
 /* !-- Search form */
 .masthead .mini-search.act {

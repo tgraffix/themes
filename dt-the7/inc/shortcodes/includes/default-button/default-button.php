@@ -12,7 +12,6 @@ require_once trailingslashit( PRESSCORE_SHORTCODES_INCLUDES_DIR ) . 'abstract-dt
 if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 
 	class DT_Shortcode_Default_Button extends DT_Shortcode_With_Inline_Css {
-		protected $content = '';
 		public static $instance;
 
 		public static function get_instance() {
@@ -47,48 +46,34 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 		}
 
 		protected function do_shortcode( $atts, $content = '' ) {
-			// store content
-			$this->content = trim( preg_replace( '/<\/?p\>/', '', $content ) );
+			$content = trim( preg_replace( '/<\/?p\>/', '', $content ) );
 
-			// return html
-			echo $this->get_html();
-		}
-		protected function get_html() {
-			$before_title = $after_title = $btn_width = '';
-			$attributes = &$this->atts;
-
-			$attributes['icon_align'] = sanitize_key( $attributes['icon_align'] );
-			$attributes['button_alignment'] = sanitize_key( $attributes['button_alignment'] );
-			$attributes['link'] = $attributes['link'] ? esc_attr( $attributes['link'] ) : '#';
-			$attributes['smooth_scroll'] = apply_filters( 'dt_sanitize_flag', $attributes['smooth_scroll'] );
-			$attributes['el_class'] = esc_attr( $attributes['el_class'] );
-
-			if ( $attributes['icon'] ) {
-
-				if ( preg_match( '/^fa[a-z]*\s/', $attributes['icon'] ) ) {
-					$attributes['icon'] = '<i class="' . esc_attr( $attributes['icon'] ) . '"></i>';
+			$icon_html = '';
+			$icon_type = $this->atts['icon_type'];
+			if ( 'html' === $icon_type ) {
+				if ( preg_match( '/^fa[a-z]*\s/', $this->atts['icon'] ) ) {
+					$icon_html = '<i class="' . esc_attr( $this->atts['icon'] ) . '"></i>';
 				} else {
-					$attributes['icon'] = wp_kses( rawurldecode( base64_decode( $attributes['icon'] ) ), array( 'i' => array( 'class' => array() ) ) );
+					$icon_html = wp_kses( rawurldecode( base64_decode( $this->atts['icon'] ) ), array( 'i' => array( 'class' => array() ) ) );
 				}
-
+			} elseif ( $this->atts["icon_{$icon_type}"] ) {
+				$icon_html = '<i class="' . esc_attr( $this->atts["icon_{$icon_type}"] ) . '"></i>';
 			}
 
-			// add icon
-			$icon_type = $this->atts['icon_type'];
-			$icon = $this->get_icon( $icon_type );
-			if ('btn_fixed_width' ==  $this->atts['btn_width'] ) {
+			$after_title = $before_title = '';
+			if ( 'right' === $this->atts['icon_align'] ) {
+				$after_title = $icon_html;
+			} else {
+				$before_title = $icon_html;
+			}
+
+			$btn_width = '';
+			if ('btn_fixed_width' ===  $this->atts['btn_width'] ) {
 				$btn_width .= ' style="width:' . absint( $this->atts['custom_btn_width'] ) . 'px;"' ;
 			}
-			if ( $icon ) {
-				if ( 'right' == $this->atts['icon_align'] ) {
-					$after_title = $icon;
-				} else {
-					$before_title = $icon;
-				}
-			}
 
+			$url = '#';
 			$link_title = $target = $rel = '';
-			$url = esc_attr( $this->atts['link'] );
 			if ( ! empty( $this->atts['link'] ) && function_exists( 'vc_build_link' ) ) {
 				$href = vc_build_link( $this->atts['link'] );
 				if ( ! empty( $href['url'] ) ) {
@@ -97,6 +82,8 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 					$link_title = ( empty( $href['title'] ) ? '' : sprintf( ' title="%s"', $href['title'] ) );
 					$rel = ( empty( $href['rel'] ) ? '' : sprintf( ' rel="%s"', $href['rel'] ) );
 				}
+			} elseif ( $this->atts['link']  ) {
+				$url = esc_attr( $this->atts['link'] );
 			}
 
 			// get button html
@@ -104,13 +91,11 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 				'before_title'	=> $before_title,
 				'after_title'	=> $after_title,
 				'href'			=> $url,
-				'title'			=> $this->content,
+				'title'			=> $content,
 				'target'		=> $target,
 				'class'			=> $this->get_html_class(),
 				'atts'			=> ' id="' . $this->get_unique_class() . '"'  . $btn_width  . $link_title . $rel ,
 			) );
-
-			//alignment
 
 			switch ( $this->atts['button_alignment'] ) {
 				case 'btn_left':
@@ -122,22 +107,9 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 				case 'btn_right':
 					$button_html = '<div class="btn-align-right">' . $button_html . '</div>';
 					break;
-			};
-
-			return $button_html;
-		}
-
-		protected function get_icon( $icon_type ) {
-			if ( 'html' == $icon_type ) {
-				return $this->atts['icon'];
 			}
 
-			$icon_class = $this->atts["icon_{$icon_type}"];
-			if ( $icon_class ) {
-				return '<i class="' . esc_attr( $icon_class ) . '"></i>';
-			}
-
-			return '';
+			echo $button_html;
 		}
 
 		protected function get_html_class() {
@@ -166,7 +138,7 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 			}
 
 			// smooth scroll
-			if ( $this->atts['smooth_scroll'] ) {
+			if ( $this->get_flag( 'smooth_scroll' ) ) {
 				$classes[] = 'anchor-link';
 			}
 
@@ -238,13 +210,6 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
             return false;
 		}
 
-		protected function compatibility_filter( &$atts ) {
-			if ( ! isset( $atts['icon_type'] ) ) {
-				$atts['icon_type'] = 'html';
-			}
-
-			return $atts;
-		}
 	}
 	DT_Shortcode_Default_Button::get_instance()->add_shortcode();
 }

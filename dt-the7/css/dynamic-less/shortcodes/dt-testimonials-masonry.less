@@ -6,7 +6,6 @@
 
 .custom-mixin-color (@customColor) when (iscolor(@customColor)) {
 	color: @customColor;
-	-webkit-text-fill-color: @customColor;
 	background: none;
 }
 .custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
@@ -65,6 +64,9 @@
 .testimonial-name span {
 	.@{unique-shortcode-class-name} & {
 		.custom-mixin-color (@post-title-color);
+		.accent-gradient & {
+			.custom-mixin-color (@post-title-color);
+		}
 		margin-bottom: @post-title-margin-bottom;
 		.custom-mixin-font-size (@post-title-font-size);
 		.custom-mixin-line-height (@post-title-line-height);
@@ -81,7 +83,9 @@
 		.custom-mixin-font-size (@testimonial-position-font-size);
 		.custom-mixin-line-height (@testimonial-position-line-height);
 		.custom-mixin-color (@testimonial-position-color);
-
+		.accent-gradient & {
+			.custom-mixin-color (@post-title-color);
+		}
 		font-style: @testimonial-position-font-style;
 		font-weight: @testimonial-position-font-weight;
 		text-transform: @testimonial-position-text-transform;

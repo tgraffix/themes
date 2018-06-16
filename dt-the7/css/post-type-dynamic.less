@@ -6,9 +6,9 @@
 }
 .text-gradient (@startColor: #eee, @endColor: white) when not (@endColor = "") {
 	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
-
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: transparent;
+  	-webkit-background-clip: text;
+  	background-clip: text;
 }
 .accent-bg-mixin {
 	color: #fff;

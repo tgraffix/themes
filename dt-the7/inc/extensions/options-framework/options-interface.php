@@ -1408,16 +1408,7 @@ function optionsframework_interface( $options, $cur_page_id ) {
 		case 'gradient_picker':
 			$field_id = $value['id'];
 			$field_name = "{$option_name}[$field_id]";
-
-			$fixed_angle = isset( $value['fixed_angle'] ) ? $value['fixed_angle'] : '';
-			if ( is_array( $val ) ) {
-				$val = ($fixed_angle ? $fixed_angle : '135deg') . "|{$val[0]} 30%|{$val[1]} 100%";
-			} elseif ( $fixed_angle ) {
-				$decoded_val = The7_Option_Field_Gradient_Picker::decode( $val );
-				$decoded_val['angle'] = $fixed_angle;
-				$val = The7_Option_Field_Gradient_Picker::encode( $decoded_val );
-			}
-
+			$val = apply_filters( 'of_sanitize_gradient_picker', $val, $value );
 			$output .= The7_Option_Field_Gradient_Picker::html( $field_name, $field_id, $val, array(
 				'hide_angle_controls' => isset( $value['fixed_angle'] ),
 			) );

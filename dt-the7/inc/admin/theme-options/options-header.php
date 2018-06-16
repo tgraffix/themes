@@ -1654,6 +1654,42 @@ $options['header-elements-text-3'] = array(
 );
 
 $options[] = array(
+	'name'                => _x( 'Text 4', 'theme-options', 'the7mk2' ),
+	'id'                  => 'microwidgets-text4_area-block',
+	'type'                => 'block',
+	'class'               => 'block-disabled',
+	'exclude_from_search' => true,
+);
+
+presscore_options_apply_template( $options, 'header-element-mobile-layout', 'header-elements-text-4' );
+
+$options['header-elements-text-4'] = array(
+	'id'       => 'header-elements-text-4',
+	'type'     => 'textarea',
+	'std'      => false,
+	'divider'  => 'top',
+	'sanitize' => 'without_sanitize',
+);
+
+$options[] = array(
+	'name'                => _x( 'Text 5', 'theme-options', 'the7mk2' ),
+	'id'                  => 'microwidgets-text5_area-block',
+	'type'                => 'block',
+	'class'               => 'block-disabled',
+	'exclude_from_search' => true,
+);
+
+presscore_options_apply_template( $options, 'header-element-mobile-layout', 'header-elements-text-5' );
+
+$options['header-elements-text-5'] = array(
+	'id'       => 'header-elements-text-5',
+	'type'     => 'textarea',
+	'std'      => false,
+	'divider'  => 'top',
+	'sanitize' => 'without_sanitize',
+);
+
+$options[] = array(
 	'name'                => _x( 'Menu 1', 'theme-options', 'the7mk2' ),
 	'id'                  => 'microwidgets-custom_menu-block',
 	'type'                => 'block',
