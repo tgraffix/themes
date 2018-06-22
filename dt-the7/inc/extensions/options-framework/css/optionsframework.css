@@ -1071,6 +1071,9 @@ div.dt-web-fonts-preview span {
 	display: none;
 }
 
+.the7-customizer .of-6-col .controls .responsive_columns-column {
+	width: 33.333%;
+}
 
 .the7-customizer #optionsframework-wrap {
 	position: fixed;

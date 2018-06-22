@@ -19,7 +19,7 @@
 .gradientPicker-ptConfig {
 	position: absolute;
 	z-index: 1;
-	margin-top: 2px;
+	margin-top: 12px;
 	background-color: white;
 	background: #fff;
 	border: 1px solid #dfdfdf;

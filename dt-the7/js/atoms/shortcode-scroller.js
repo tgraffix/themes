@@ -154,7 +154,7 @@
 		//run autoplay on mouseleave
 		$this.find('.dt-owl-item').on('mouseleave',function(e){
 			if($autoPlay){
-				$this.trigger('play.owl.autoplay',[$animSpeed]);
+				$this.trigger('play.owl.autoplay',[600]);
 			}
 		});
 

@@ -72,25 +72,23 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 				$btn_width .= ' style="width:' . absint( $this->atts['custom_btn_width'] ) . 'px;"' ;
 			}
 
-			$url = '#';
+			$url = $this->atts['link'] ? $this->atts['link'] : '#';
 			$link_title = $target = $rel = '';
-			if ( ! empty( $this->atts['link'] ) && function_exists( 'vc_build_link' ) ) {
-				$href = vc_build_link( $this->atts['link'] );
-				if ( ! empty( $href['url'] ) ) {
-					$url = esc_attr( $href['url'] );
-					$target = ( empty( $href['target'] ) ? '' : sprintf( ' target="%s"', trim( $href['target'] ) ) );
-					$link_title = ( empty( $href['title'] ) ? '' : sprintf( ' title="%s"', $href['title'] ) );
-					$rel = ( empty( $href['rel'] ) ? '' : sprintf( ' rel="%s"', $href['rel'] ) );
+			if ( function_exists( 'vc_build_link' ) ) {
+				$link = vc_build_link( $this->atts['link'] );
+				if ( ! empty( $link['url'] ) ) {
+					$url = $link['url'];
+					$target = ( empty( $link['target'] ) ? '' : sprintf( ' target="%s"', trim( $link['target'] ) ) );
+					$link_title = ( empty( $link['title'] ) ? '' : sprintf( ' title="%s"', $link['title'] ) );
+					$rel = ( empty( $link['rel'] ) ? '' : sprintf( ' rel="%s"', $link['rel'] ) );
 				}
-			} elseif ( $this->atts['link']  ) {
-				$url = esc_attr( $this->atts['link'] );
 			}
 
 			// get button html
 			$button_html = presscore_get_button_html( array(
 				'before_title'	=> $before_title,
 				'after_title'	=> $after_title,
-				'href'			=> $url,
+				'href'			=> esc_attr( $url ),
 				'title'			=> $content,
 				'target'		=> $target,
 				'class'			=> $this->get_html_class(),

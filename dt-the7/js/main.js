@@ -11757,7 +11757,7 @@ jQuery(document).ready(function($) {
 		//run autoplay on mouseleave
 		$this.find('.dt-owl-item').on('mouseleave',function(e){
 			if($autoPlay){
-				$this.trigger('play.owl.autoplay',[$animSpeed]);
+				$this.trigger('play.owl.autoplay',[600]);
 			}
 		});
 
@@ -15086,9 +15086,6 @@ $('.dt-trigger-first-pswp').addClass('pspw-ready').on('click', function(e){
 	$commentForm.on('click', 'a.clear-form', function (e) {
 		e.preventDefault();
 		$commentForm.find('input[type="text"], textarea').val('');
-		if($(".contact-form-material").length > 0){
-			$commentForm.find('input[type="text"], textarea').parent().removeClass("is-focused");
-		};
 		return false;
 	});
 

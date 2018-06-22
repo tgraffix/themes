@@ -97,7 +97,7 @@ class Presscore_Inc_Widgets_ContactForm extends WP_Widget {
 		if ( $fields_not_empty ) {
 
 			$form_class = array(
-				'contact-form',
+				'dt-contact-form',
 				'dt-form',
 			);
 

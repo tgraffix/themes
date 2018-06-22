@@ -1314,11 +1314,11 @@ msgstr "Viber"
 
 #: inc/helpers/options.php:86
 msgid "Whatsapp"
-msgstr "Viber"
+msgstr "Whatsapp"
 
 #: inc/helpers/options.php:87
 msgid "Reddit"
-msgstr "Viber"
+msgstr "Reddit"
 
 #: inc/helpers/options.php:88
 msgid "Snapchat"

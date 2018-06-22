@@ -312,31 +312,31 @@ table {
   border: none;
 }
 /* validationEngine.jquery:end; */
-.contact-form.dt-form span .formError,
-.contact-form.dt-form .formError,
-.contact-form.dt-form .hide-privacy-message {
+.dt-contact-form.dt-form span .formError,
+.dt-contact-form.dt-form .formError,
+.dt-contact-form.dt-form .hide-privacy-message {
   display: none;
 }
-.popup-message-style .contact-form.dt-form .formError {
+.popup-message-style .dt-contact-form.dt-form .formError {
   display: none;
 }
-.contact-form.dt-form span .formError.first,
-.contact-form.dt-form span .formError.field-success {
+.dt-contact-form.dt-form span .formError.first,
+.dt-contact-form.dt-form span .formError.field-success {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: -ms-flex;
   display: flex;
 }
-.popup-message-style .contact-form.dt-form .formError.first,
-.popup-message-style .contact-form.dt-form .formError.field-success {
+.popup-message-style .dt-contact-form.dt-form .formError.first,
+.popup-message-style .dt-contact-form.dt-form .formError.field-success {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: -ms-flex;
   display: flex;
 }
-.contact-form.dt-form .formError .close-message {
+.dt-contact-form.dt-form .formError .close-message {
   position: absolute;
   top: 50%;
   width: 30px;
@@ -351,17 +351,17 @@ table {
   text-align: center;
   opacity: 0.5;
 }
-.contact-form.dt-form .formError .close-message:before {
+.dt-contact-form.dt-form .formError .close-message:before {
   content: "\f00d";
 }
-.contact-form.dt-form .formError .close-message:hover {
+.dt-contact-form.dt-form .formError .close-message:hover {
   cursor: pointer;
   opacity: 1;
 }
-.contact-form.dt-form .error-field:not(.field-success) {
+.dt-contact-form.dt-form .error-field:not(.field-success) {
   border-color: red;
 }
-.inline-message-style .contact-form.dt-form {
+.inline-message-style .dt-contact-form.dt-form {
   position: relative;
 }
 .inline-message-style .form-fields > span {
@@ -10822,7 +10822,7 @@ a.pswp__share--download:hover {
   display: none;
 }
 #commentform textarea,
-.contact-form textarea {
+.dt-contact-form textarea {
   width: 100%;
   margin: 0 0 10px;
 }
@@ -11714,6 +11714,9 @@ html:not(.mobile-true) .skill-value {
 .textwidget input {
   width: 100%;
 }
+.textwidget .owl-stage {
+  max-width: none;
+}
 a.rsswidget {
   text-decoration: none;
   display: inline-block;
@@ -12381,7 +12384,7 @@ div.mc4wp-form button[type="submit"]:hover,
 }
 #page .btn-margin,
 #page .btn-margin:last-child,
-#page .contact-form .dt-btn {
+#page .dt-contact-form .dt-btn {
   margin-right: 10px;
 }
 #page .btn-margin-left,

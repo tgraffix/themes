@@ -134,5 +134,5 @@ jQuery(function($){
 		})
 	}
 
-	$( 'form.contact-form.dt-form' ).dtInitContactForm();
+	$( 'form.dt-contact-form.dt-form' ).dtInitContactForm();
 });

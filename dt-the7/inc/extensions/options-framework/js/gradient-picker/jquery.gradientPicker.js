@@ -273,24 +273,27 @@
 		this.visible = false;
 
 		$rmEl.click(this.removeClicked);
+
+		this.$cpicker.parents(".wp-picker-container:first").find(".wp-color-result").off("click");
 	}
 
 	ControlPtConfig.prototype = {
 		show: function(position, color, listener) {
-			this.visible = true;
 			this.listener = listener;
             this.$el.css("visibility", "visible");
             this.$cpicker.wpColorPicker("color", color);
-            this.$cpicker.trigger("input");
+
+			if (!this.visible) {
+				this.$cpicker.wpColorPicker("open");
+			}
+
             if (this.opts.orientation === "horizontal") {
-				this.$el.css("left", position.left);
+				this.$el.css("left", 0);
 			} else {
 				this.$el.css("top", position.top);
 			}
-			//else {
-			//	this.visible = false;
-				//this.$el.css("visibility", "hidden");
-			//}
+
+			this.visible = true;
 		},
 
 		hide: function() {

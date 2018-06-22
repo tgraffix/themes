@@ -54,7 +54,7 @@ if ( ! class_exists( 'DT_Shortcode_Blog_Carousel', false ) ) :
 				'dis_posts_total' => '6',
 				'layout' => 'classic',
 				'bo_content_width' => '75%',
-				'bo_content_overlap' => '100px',
+				'bo_content_top_overlap' => '100px',
 				'grovly_content_overlap' => '0px',
 				'content_bg' => 'y',
 				'custom_content_bg_color' => '',
@@ -439,7 +439,7 @@ if ( ! class_exists( 'DT_Shortcode_Blog_Carousel', false ) ) :
 
 
 			$less_vars->add_pixel_or_percent_number( 'post-content-width', $this->get_att( 'bo_content_width' ) );
-			$less_vars->add_pixel_number( 'post-content-top-overlap', $this->get_att( 'bo_content_overlap' ) );
+			$less_vars->add_pixel_number( 'post-content-top-overlap', $this->get_att( 'bo_content_top_overlap' ) );
 			$less_vars->add_pixel_or_percent_number( 'post-content-overlap', $this->get_att( 'grovly_content_overlap' ) );
 
 			$less_vars->add_keyword( 'post-content-bg', $this->get_att( 'custom_content_bg_color', '~""' ) );

@@ -425,6 +425,8 @@
             <key name="header-elements-text" />
             <key name="header-elements-text-2" />
             <key name="header-elements-text-3" />
+            <key name="header-elements-text-4" />
+            <key name="header-elements-text-5" />
             <key name="header-elements-login-url" />
             <key name="header-elements-logout-caption" />
             <key name="header-elements-login-caption" />

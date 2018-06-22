@@ -7,9 +7,6 @@
 	$commentForm.on('click', 'a.clear-form', function (e) {
 		e.preventDefault();
 		$commentForm.find('input[type="text"], textarea').val('');
-		if($(".contact-form-material").length > 0){
-			$commentForm.find('input[type="text"], textarea').parent().removeClass("is-focused");
-		};
 		return false;
 	});
 
